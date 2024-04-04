@@ -40,9 +40,6 @@ export const MainApp = () => {
                 index
                 element={
                   <ContactListPage
-                    contactsState={contactsState}
-                    favoriteContactsState={favoriteContactsState}
-                    groupContactsState={groupContactsState}
                   />
                 }
               />
@@ -51,9 +48,6 @@ export const MainApp = () => {
                   index
                   element={
                     <ContactListPage
-                      contactsState={contactsState}
-                      favoriteContactsState={favoriteContactsState}
-                      groupContactsState={groupContactsState}
                     />
                   }
                 />
