@@ -1,19 +1,19 @@
 import { IContact } from "src/types/IContact";
 
 // Actions
-export const TOGGLE_FAVORITES_ACTION = 'TOGGLE_FAVORITES_ACTION';
+export const TOGGLE_FAVOURITES_ACTION = 'TOGGLE_FAVORITES_ACTION';
 export const GOTO_CONTACT_ACTION = 'GOTO_CONTACT_ACTION';
 
 
 // Action Creators
 interface IToggleFavoritesAction {
-    type: typeof TOGGLE_FAVORITES_ACTION;
+    type: typeof TOGGLE_FAVOURITES_ACTION;
     payload: {
         id: IContact['id'];
     }
 }
 export function toggleFavoritesActionCreator(id: IContact['id']): IToggleFavoritesAction {
-    return { type: TOGGLE_FAVORITES_ACTION, payload: { id } }
+    return { type: TOGGLE_FAVOURITES_ACTION, payload: { id } }
 }
 
 interface IGotoContactAction {
@@ -27,4 +27,4 @@ export function gotoContactActionCreator(id: IContact['id']): IGotoContactAction
 }
 
 // Action Types
-export type AppActions = IToggleFavoritesAction | IGotoContactAction;
+export type ContactsActions = IToggleFavoritesAction | IGotoContactAction;
