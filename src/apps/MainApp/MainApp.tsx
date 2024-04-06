@@ -7,7 +7,7 @@ import {
   ContactListPage,
   GroupPage,
   ContactPage,
-  FavoritListPage,
+  FavouritListPage,
   GroupListPage,
 } from 'src/pages'
 import { ContactDto } from 'src/types/dto/ContactDto'
@@ -36,64 +36,16 @@ export const MainApp = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route
-                index
-                element={
-                  <ContactListPage
-                  />
-                }
-              />
+              <Route index element={<ContactListPage />} />
               <Route path="contact">
-                <Route
-                  index
-                  element={
-                    <ContactListPage
-                    />
-                  }
-                />
-                <Route
-                  path=":contactId"
-                  element={
-                    <ContactPage
-                      contactsState={contactsState}
-                      favoriteContactsState={favoriteContactsState}
-                      groupContactsState={groupContactsState}
-                    />
-                  }
-                />
+                <Route index element={<ContactListPage />} />
+                <Route path=":contactId" element={<ContactPage />} />
               </Route>
               <Route path="groups">
-                <Route
-                  index
-                  element={
-                    <GroupListPage
-                      contactsState={contactsState}
-                      favoriteContactsState={favoriteContactsState}
-                      groupContactsState={groupContactsState}
-                    />
-                  }
-                />
-                <Route
-                  path=":groupId"
-                  element={
-                    <GroupPage
-                      contactsState={contactsState}
-                      favoriteContactsState={favoriteContactsState}
-                      groupContactsState={groupContactsState}
-                    />
-                  }
-                />
+                <Route index element={<GroupListPage />} />
+                <Route path=":groupId" element={<GroupPage />} />
               </Route>
-              <Route
-                path="favorit"
-                element={
-                  <FavoritListPage
-                    contactsState={contactsState}
-                    favoriteContactsState={favoriteContactsState}
-                    groupContactsState={groupContactsState}
-                  />
-                }
-              />
+              <Route path="favorit" element={<FavouritListPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

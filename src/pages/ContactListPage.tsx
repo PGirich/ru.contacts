@@ -6,14 +6,8 @@ import { IContact } from 'src/types/IContact'
 
 export const ContactListPage = memo(() => {
   // stored data
-  //const contacts = useAppSelector((state) => state.contacts)
-  const contacts = useAppSelector((state) => {
-    console.log('selector: ', state)
-    return state.contacts
-  })
+  const contacts = useAppSelector((state) => state.contacts)
   const groups = useAppSelector((state) => state.groups)
-  // selector - stored data was changed
-  const dataModified = useAppSelector((state) => state.dataModified)
   // local state for filter form values
   const [filterName, setFilterName] = useState<string>('')
   const [filterGroup, setFilterGroup] = useState<string>('')
@@ -30,9 +24,7 @@ export const ContactListPage = memo(() => {
         fgroups.forEach((gr) => fgroupsContactIds.push(...gr.contactIds))
       }
     }
-    console.log('useEffect group filter changed: ', fgroupsContactIds.length)
   }
-  //useEffect(updateFgroupsContactIds, [filterGroup, dataModified])
   updateFgroupsContactIds()
 
   // filter function
@@ -44,9 +36,7 @@ export const ContactListPage = memo(() => {
   }
 
   // render FC
-  console.log(
-    `RENDER! Cn: ${contacts?.length}; Gr: ${groups?.length}; IDsInGroups: ${fgroupsContactIds.length}`
-  )
+  //console.log(`RENDER! Cn: ${contacts?.length}; Gr: ${groups?.length}; IDsInGroups: ${fgroupsContactIds.length}`)
   return (
     <>
       <Row xxl={1}>

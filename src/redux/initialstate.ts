@@ -5,9 +5,6 @@ import { IAppState } from 'src/types/IAppstate'
 export const initialAppState: IAppState = {
   contacts: [],
   groups: DATA_GROUP_CONTACT,
-  dataModified: Date.now(),
-  currentGroup: undefined,
-  currentContact: undefined,
 }
 DATA_CONTACT.forEach((contact) => {
   let cn = {

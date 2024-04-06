@@ -1,7 +1,6 @@
 import { IAppState } from '../types/IAppstate'
 import {
   TOGGLE_FAVOURITES_ACTION,
-  GOTO_CONTACT_ACTION,
   ContactsActions,
 } from './contactsActions'
 import { initialAppState } from './initialstate'
@@ -17,9 +16,6 @@ export function contactsReducer(
       if (cn) {
         cn.favorite = !cn.favorite
       }
-      return state.contacts
-    case GOTO_CONTACT_ACTION:
-      state.currentContact = action.payload.id
       return state.contacts
     default:
       return state.contacts
