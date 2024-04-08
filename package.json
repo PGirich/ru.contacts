@@ -50,6 +50,7 @@
     "@reduxjs/toolkit": "^2.2.3",
     "@types/react": "^18.2.74",
     "react-redux": "^9.1.0",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0"
   }
 }

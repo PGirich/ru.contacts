@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import './MainApp.scss'
 import { ThemeProvider } from 'react-bootstrap'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -10,23 +9,10 @@ import {
   FavouritListPage,
   GroupListPage,
 } from 'src/pages'
-import { ContactDto } from 'src/types/dto/ContactDto'
-import { FavoriteContactsDto } from 'src/types/dto/FavoriteContactsDto'
-import { GroupContactsDto } from 'src/types/dto/GroupContactsDto'
-import { DATA_CONTACT, DATA_GROUP_CONTACT } from 'src/__data__'
 import { Provider } from 'react-redux'
 import { store } from 'src/redux/store'
 
 export const MainApp = () => {
-  const contactsState = useState<ContactDto[]>(DATA_CONTACT)
-  const favoriteContactsState = useState<FavoriteContactsDto>([
-    DATA_CONTACT[0].id,
-    DATA_CONTACT[1].id,
-    DATA_CONTACT[2].id,
-    DATA_CONTACT[3].id,
-  ])
-  const groupContactsState = useState<GroupContactsDto[]>(DATA_GROUP_CONTACT)
-
   return (
     <Provider store={store}>
       <ThemeProvider
