@@ -1,4 +1,3 @@
-import { IContact } from 'src/types/IContact'
 import { IGroup } from 'src/types/IGroup'
 
 // Actions

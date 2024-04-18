@@ -1,10 +1,13 @@
 import { DATA_CONTACT, DATA_GROUP_CONTACT } from 'src/__data__'
-import { IAppState } from 'src/types/IAppstate'
+import { IContactsState } from './contactsState'
+import { IGroupsState } from './groupsState'
 
 // initial state define
-export const initialAppState: IAppState = {
-  contacts: [],
-  groups: DATA_GROUP_CONTACT,
+export const initialContactsState: IContactsState = {
+  arrContacts: [],
+}
+export const initialGroupsState: IGroupsState = {
+  arrGroups: DATA_GROUP_CONTACT,
 }
 DATA_CONTACT.forEach((contact) => {
   let cn = {
@@ -12,9 +15,9 @@ DATA_CONTACT.forEach((contact) => {
     favorite: undefined,
     dataModified: undefined,
   }
-  initialAppState.contacts.push(cn)
+  initialContactsState.arrContacts.push(cn)
 })
-initialAppState.contacts[0].favorite = true
-initialAppState.contacts[1].favorite = true
-initialAppState.contacts[2].favorite = true
-initialAppState.contacts[3].favorite = true
+initialContactsState.arrContacts[0].favorite = true
+initialContactsState.arrContacts[1].favorite = true
+initialContactsState.arrContacts[2].favorite = true
+initialContactsState.arrContacts[3].favorite = true
