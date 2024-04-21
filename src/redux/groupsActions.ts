@@ -1,4 +1,5 @@
 import { IGroup } from 'src/types/IGroup'
+import { ILoadSuccessAction } from './loadActions'
 
 // Actions
 export const DELETE_GROUP_ACTION = 'DELETE_GROUP_ACTION'
@@ -15,4 +16,4 @@ export function deleteGroupActionCreator(id: IGroup['id']): IDeleteGroupAction {
 }
 
 // Action Types
-export type GroupsActions = IDeleteGroupAction // | ICreateGroupAction |...
+export type GroupsActions = IDeleteGroupAction

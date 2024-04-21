@@ -5,11 +5,15 @@ import { GroupCard } from 'src/components/GroupCard'
 import { Empty } from 'src/components/Empty'
 import { ContactCard } from 'src/components/ContactCard'
 import { useAppSelector } from 'src/redux/hooks'
+import { IContact } from 'src/types/IContact'
+import { IGroup } from 'src/types/IGroup'
 
 export const GroupPage = memo(() => {
   // stored data
-  const contacts = useAppSelector((state) => state.contacts)
-  const groups = useAppSelector((state) => state.groups)
+  const contacts: IContact[] = useAppSelector(
+    (state) => state.contacts.arrContacts
+  )
+  const groups: IGroup[] = useAppSelector((state) => state.groups.arrGroups)
   const { groupId } = useParams<{ groupId: string }>()
   const group = groups.find(({ id }) => id === groupId)
   return (

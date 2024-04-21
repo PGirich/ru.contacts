@@ -1,7 +1,9 @@
-import { IContact } from "src/types/IContact"
+import { IContact } from 'src/types/IContact'
 
 // data model
-export interface IContactsState {
-    arrContacts: IContact[]
-  }
-  
+export interface IContactsReducer {
+  arrContacts: IContact[]
+}
+export const initialContacts: IContactsReducer = {
+  arrContacts: [],
+}

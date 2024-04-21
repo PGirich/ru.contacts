@@ -1,13 +1,14 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useState } from 'react'
 import { Col, Form, InputGroup, Row } from 'react-bootstrap'
 import { ContactCard } from 'src/components/ContactCard'
 import { useAppSelector } from 'src/redux/hooks'
 import { IContact } from 'src/types/IContact'
+import { IGroup } from 'src/types/IGroup'
 
 export const ContactListPage = memo(() => {
   // stored data
-  const contacts = useAppSelector((state) => state.contacts)
-  const groups = useAppSelector((state) => state.groups)
+  const contacts: IContact[] = useAppSelector((state) => state.contacts.arrContacts)
+  const groups: IGroup[] = useAppSelector((state) => state.groups.arrGroups)
   // local state for filter form values
   const [filterName, setFilterName] = useState<string>('')
   const [filterGroup, setFilterGroup] = useState<string>('')
@@ -35,8 +36,6 @@ export const ContactListPage = memo(() => {
     )
   }
 
-  // render FC
-  //console.log(`RENDER! Cn: ${contacts?.length}; Gr: ${groups?.length}; IDsInGroups: ${fgroupsContactIds.length}`)
   return (
     <>
       <Row xxl={1}>
@@ -44,6 +43,7 @@ export const ContactListPage = memo(() => {
           <InputGroup className="mb-3">
             <InputGroup.Text id="contact-name">Contact filter</InputGroup.Text>
             <Form.Control
+              id="contact-name-filter"
               placeholder="Contact name"
               aria-label="Contact name"
               aria-describedby="contact-name"
@@ -56,6 +56,7 @@ export const ContactListPage = memo(() => {
           <InputGroup className="mb-3">
             <InputGroup.Text id="group-name">Group filter</InputGroup.Text>
             <Form.Control
+              id="group-name-filter"
               placeholder="Group name"
               aria-label="Group name"
               aria-describedby="group"

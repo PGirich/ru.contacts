@@ -1,16 +1,26 @@
 import { DELETE_GROUP_ACTION, GroupsActions } from './groupsActions'
-import { IGroupsState } from './groupsState'
-import { initialGroupsState } from './initialstate'
+import { IGroupsReducer, initialGroups } from './groupsState'
+import { LOAD_ACTION_SUCCESS } from './loadActions'
+import { AppActions } from './store'
 
 export function groupsReducer(
-  groupsState: IGroupsState = initialGroupsState,
-  action: GroupsActions // ?why? | ContactsActions
+  state: IGroupsReducer = initialGroups,
+  action: AppActions
 ) {
-  //console.log('state: ', state, 'action: ', action.type)
+  const newState: IGroupsReducer = {
+    ...state,
+    arrGroups: [...state.arrGroups],
+  }
   switch (action.type) {
     case DELETE_GROUP_ACTION:
-      return groupsState.arrGroups.filter(({ id }) => id !== action.payload.id)
+      newState.arrGroups = state.arrGroups.filter(
+        ({ id }) => id !== action.payload.id
+      )
+      return newState
+    case LOAD_ACTION_SUCCESS:
+      newState.arrGroups = action.payload.aGr
+      return newState
     default:
-      return groupsState
+      return newState
   }
 }

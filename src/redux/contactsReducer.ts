@@ -1,24 +1,41 @@
-import { TOGGLE_FAVOURITES_ACTION, ContactsActions } from './contactsActions'
-import { initialContactsState } from './initialstate'
-import { IContactsState } from './contactsState'
+import { TOGGLE_FAVOURITES_ACTION } from './contactsActions'
+import { IContactsReducer, initialContacts } from './contactsState'
+import { LOAD_ACTION_SUCCESS } from './loadActions'
+import { AppActions } from './store'
 
 export function contactsReducer(
-  contactsState: IContactsState = initialContactsState,
-  action: ContactsActions
+  state: IContactsReducer = initialContacts,
+  action: AppActions
 ) {
-  //console.log('state: ', state, 'action: ', action.type)
+  const newState: IContactsReducer = {
+    ...state,
+    arrContacts: [...state.arrContacts],
+  }
   switch (action.type) {
     case TOGGLE_FAVOURITES_ACTION:
-      const newstate = {
-        ...contactsState,
-        arrContacts: [...contactsState.arrContacts],
+      const cnIdx = newState.arrContacts.findIndex(
+        ({ id }) => id === action.payload.id
+      )
+      if (cnIdx !== -1) {
+        const cn = newState.arrContacts[cnIdx]
+        newState.arrContacts[cnIdx] = { ...cn, favorite: !cn.favorite }
       }
-      const cn = newstate.arrContacts.find(({ id }) => id === action.payload.id)
-      if (cn) {
-        cn.favorite = !cn.favorite
-      }
-      return newstate
+      return newState
+    case LOAD_ACTION_SUCCESS:
+      action.payload.aCont.forEach((contact: any) => {
+        let cn = {
+          ...contact,
+          favorite: undefined,
+          dataModified: undefined,
+        }
+        newState.arrContacts.push(cn)
+      })
+      newState.arrContacts[0].favorite = true
+      newState.arrContacts[1].favorite = true
+      newState.arrContacts[2].favorite = true
+      newState.arrContacts[3].favorite = true
+      return newState
     default:
-      return contactsState
+      return newState
   }
 }
